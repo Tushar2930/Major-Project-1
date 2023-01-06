@@ -1,103 +1,77 @@
 import React from "react";
-import "./Login-styles.css";
-class FluidInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false,
-      value: ""
-    };
-  }
-  focusField() {
-    const { focused } = this.state;
-    this.setState({
-      focused: !focused
-    });
-  }
-  handleChange(event) {
-    const { target } = event;
-    const { value } = target;
-    this.setState({
-      value: value
-    });
-  }
-  render() {
-    const { type, label, style, id } = this.props;
-    const { focused, value } = this.state;
+import "./Login-styles.css"
+function Login () {
 
-    let inputClass = "fluid-input";
-    if (focused) {
-      inputClass += " fluid-input--focus";
-    } else if (value !== "") {
-      inputClass += " fluid-input--open";
-    }
+  return(
+      <div className="limiter">
+		<div className="container-login100">
+			<div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form className="login100-form validate-form">
+					<span className="login100-form-title p-b-49">
+						Sign Up
+					</span>
 
-    return (
-      <div className={inputClass} style={style}>
-        <div className="fluid-input-holder">
-          <input
-            className="fluid-input-input"
-            type={type}
-            id={id}
-            onFocus={this.focusField.bind(this)}
-            onBlur={this.focusField.bind(this)}
-            onChange={this.handleChange.bind(this)}
-            autocomplete="off"
-          />
-          <label className="fluid-input-label" forHtml={id}>
-            {label}
-          </label>
-        </div>
-      </div>
-    );
-  }
+					<div className="wrap-input100 validate-input m-b-23">
+						<span className="label-input100">Email</span>
+						<input className="input100" type="text" name="email" placeholder="Type your email" />
+						<span className="focus-input100" ></span>
+					</div>
+
+					<div className="wrap-input100 validate-input" >
+						<span className="label-input100">Password</span>
+						<input className="input100" type="password" name="pass" placeholder="Type your password" />
+						<span className="focus-input100" ></span>
+					</div>
+					
+					<div className="text-right p-t-8 p-b-31">
+						<a href="#">
+							Forgot password?
+						</a>
+					</div>
+					
+					<div className="container-login100-form-btn">
+						<div className="wrap-login100-form-btn">
+							<div className="login100-form-bgbtn"></div>
+							<button className="login100-form-btn">
+								Login
+							</button>
+						</div>
+					</div>
+
+					<div className="txt1 text-center p-t-54 p-b-20">
+						<span>
+							Or Sign Up Using
+						</span>
+					</div>
+
+					<div className="flex-c-m">
+						<a href="#" className="login100-social-item bg1">
+							<i className="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" className="login100-social-item bg2">
+							<i className="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" className="login100-social-item bg3">
+							<i className="fa fa-google"></i>
+						</a>
+					</div>
+
+					<div className="flex-col-c p-t-155">
+						<span className="txt1 p-b-17">
+							Or Sign Up Using
+						</span>
+
+						<a href="/user/sign-up" className="txt2">
+							Sign Up
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  );
 }
 
-class Button extends React.Component {
-  render() {
-    return (
-      <div
-        className={`button ${this.props.buttonClass}`}
-        onClick={this.props.onClick}
-      >
-        {this.props.buttonText}
-      </div>
-    );
-  }
-}
-
-class SignUpContainer extends React.Component {
-  render() {
-    const style = {
-      margin: "15px 0"
-    };
-    return (
-      <div className="login-container">
-        <div className="title">Sign Up</div>
-        <FluidInput type="text" label="username" id="name" style={style} />
-        <FluidInput
-          type="email"
-          label="Email"
-          id="email"
-          style={style}
-        />
-        <FluidInput
-          type="password"
-          label="password"
-          id="password"
-          style={style}
-        />
-        <FluidInput
-          type="password"
-          label="confirm password"
-          id="password"
-          style={style}
-        />
-        <Button buttonText="Sign Up" buttonClass="login-button" />
-     
-      </div>
-    );
-  }
-}
-
-export default SignUpContainer;
+export default Login;

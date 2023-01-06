@@ -6,7 +6,7 @@ function Header() {
       <nav>
         <div>
           <ul type="none">
-            <li class="brand">
+            <li className="brand">
               <img src="logo.png" alt="" />
               Kickstarter
             </li>
